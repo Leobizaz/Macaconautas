@@ -45,7 +45,7 @@ public class RaycastIKBody : MonoBehaviour
             t += Time.deltaTime;
 
             float index = Mathf.InverseLerp(0, 0.3f, t);
-            targetJoint.transform.position = new Vector3(Mathf.Lerp(targetJoint.transform.position.x, this.transform.position.x, index),
+            targetJoint.transform.localPosition = new Vector3(Mathf.Lerp(targetJoint.transform.position.x, this.transform.position.x, index),
                 Mathf.Lerp(targetJoint.transform.position.y + 2 * index, this.transform.position.y, index), 
                 Mathf.Lerp(targetJoint.transform.position.z, this.transform.position.z, index));
 
