@@ -14,7 +14,7 @@ public class turretAim : MonoBehaviour
 
     // shooting
     public ParticleSystem tiro;
-    public float fireRate = 1f;
+    public float fireRate = 0.2f;
     private float fireCountdown = 0f;
 
 
@@ -57,33 +57,36 @@ public class turretAim : MonoBehaviour
     
     void Update()
     {
+
+        if (tiro.isPlaying && target == null)
+            tiro.Stop();
+
         if (target == null)
             return;
 
+        
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation =  Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotateReference.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
 
         partToRotateReference.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
 
-        //shooting
+        
 
-        if(fireCountdown <= 0f)
-        {
-            Shoot();
+
+            //shooting
+
+            if (fireCountdown <= 0 && target != null)
+            {                      
             tiro.Play();
             fireCountdown = 1f / fireRate;
-        }
+            }
 
         fireCountdown -= Time.deltaTime;
 
     }
 
-    void Shoot()
-    {
-        Debug.Log("SHIET!");
-
-    }
+   
 
     private void OnDrawGizmos()
     {
