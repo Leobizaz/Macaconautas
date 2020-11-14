@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000011842054182}
   - component: {fileID: 33000012801772128}
   - component: {fileID: 23000013672910554}
-  - component: {fileID: 64230861130044994}
+  - component: {fileID: 2511887369147902293}
   m_Layer: 0
   m_Name: tower-castle_square
   m_TagString: Untagged
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64230861130044994
-MeshCollider:
+--- !u!65 &2511887369147902293
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,7 +95,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: d2024835a9a4c4dd0a5ba99b8e98a306, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 4.6120667, y: 17.954996, z: 4.6099653}
+  m_Center: {x: -0.00000023841856, y: 8.977498, z: 1.1368684e-13}
