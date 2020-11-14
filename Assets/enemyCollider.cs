@@ -6,8 +6,8 @@ public class enemyCollider : MonoBehaviour
 {
      void OnParticleCollision(GameObject other)
     {
-        Debug.Log("colisao");
-        Destroy(transform.gameObject);
+        // Debug.Log("colisao");
+        SimplePool.Despawn(this.gameObject);
     }
 
 }
