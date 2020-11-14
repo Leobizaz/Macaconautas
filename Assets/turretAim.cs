@@ -13,6 +13,7 @@ public class turretAim : MonoBehaviour
     public int turnSpeed = 3;
 
     // shooting
+    public ParticleSystem tiro;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
 
@@ -70,6 +71,7 @@ public class turretAim : MonoBehaviour
         if(fireCountdown <= 0f)
         {
             Shoot();
+            tiro.Play();
             fireCountdown = 1f / fireRate;
         }
 
