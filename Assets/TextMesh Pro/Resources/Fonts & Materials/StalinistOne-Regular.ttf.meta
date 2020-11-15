@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 980b473cc7d99454fb8f10865f68faa7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Stalinist One
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 49ce63eff0e1d95409605d6ce5beb593, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
