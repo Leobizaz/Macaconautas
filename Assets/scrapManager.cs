@@ -27,7 +27,7 @@ public class scrapManager : MonoBehaviour
 
     void Start()
     {
-        playerPosForSpawn = GameObject.FindGameObjectWithTag("Player").transform;
+        playerPosForSpawn = GameObject.FindGameObjectWithTag("Core").transform;
         SimplePool.Preload(scrapPrefab, ScrapCount);
         textRef = GetComponentInChildren<Text>();
 

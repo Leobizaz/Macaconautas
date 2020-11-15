@@ -74,7 +74,7 @@ namespace Tutorial
                 //We dont yet know if we are drawing a square, but we need the first coordinate in case we do draw a square
                 RaycastHit hit;
                 //Fire ray from camera
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 200f, layerMask, QueryTriggerInteraction.Collide))
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 2000f, layerMask, QueryTriggerInteraction.Collide))
                 {
                     //The corner position of the square
                     squareStartPos = hit.point;
@@ -147,10 +147,10 @@ namespace Tutorial
                 //Try to select a new unit
                 RaycastHit hit;
                 //Fire ray from camera
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 200f, layerMask, QueryTriggerInteraction.Collide))
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 2000f, layerMask, QueryTriggerInteraction.Collide))
                 {
                     //Did we hit a friendly unit?
-                    if (hit.collider.CompareTag("Torre"))
+                    if (hit.collider.CompareTag("Torre") || hit.collider.CompareTag("Core"))
                     {
                         GameObject activeUnit = hit.collider.gameObject;
                         //Set this unit to selected
@@ -228,10 +228,10 @@ namespace Tutorial
             //Fire a ray from the mouse position to get the unit we want to highlight
             RaycastHit hit;
             //Fire ray from camera
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 200f, layerMask, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 2000f, layerMask, QueryTriggerInteraction.Collide))
             {
                 //Did we hit a friendly unit?
-                if (hit.collider.CompareTag("Torre"))
+                if (hit.collider.CompareTag("Torre") || hit.collider.CompareTag("Core"))
                 {
                     //Get the object we hit
                     GameObject currentObj = hit.collider.gameObject;
@@ -335,22 +335,22 @@ namespace Tutorial
             RaycastHit hit;
             int i = 0;
             //Fire ray from camera
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(TL), out hit, 200f, layerMask, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(TL), out hit, 2000f, layerMask, QueryTriggerInteraction.Collide))
             {
                 TL = hit.point;
                 i++;
             }
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(TR), out hit, 200f, layerMask, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(TR), out hit, 2000f, layerMask, QueryTriggerInteraction.Collide))
             {
                 TR = hit.point;
                 i++;
             }
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(BL), out hit, 200f, layerMask, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(BL), out hit, 2000f, layerMask, QueryTriggerInteraction.Collide))
             {
                 BL = hit.point;
                 i++;
             }
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(BR), out hit, 200f, layerMask, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(BR), out hit, 2000f, layerMask, QueryTriggerInteraction.Collide))
             {
                 BR = hit.point;
                 i++;

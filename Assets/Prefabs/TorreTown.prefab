@@ -9835,14 +9835,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8396226, g: 0.027723404, b: 0.027723404, a: 1}
+  m_Color: {r: 0.03137255, g: 0.9607843, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a2e2a83536d4eef45ace93d156eab562, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 69c448150a4e9c14e8ceb7dd005d9397, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9917,7 +9917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 69c448150a4e9c14e8ceb7dd005d9397, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23230,9 +23230,10 @@ GameObject:
   - component: {fileID: 6906852254937136075}
   - component: {fileID: 5161422236189500279}
   - component: {fileID: 6028153147168899168}
+  - component: {fileID: 1324552089197613660}
   m_Layer: 0
   m_Name: TorreTown
-  m_TagString: Torre
+  m_TagString: Core
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23287,7 +23288,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6790685177739007579}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -23338,6 +23339,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   active: 0
+--- !u!135 &1324552089197613660
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6790685177739007579}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.39
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6790835625919951645
 GameObject:
   m_ObjectHideFlags: 0
@@ -23515,14 +23529,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1063960b0268ea04abd43bcce0878b71, type: 3}
---- !u!1 &716672716683396382 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1063960b0268ea04abd43bcce0878b71, type: 3}
-  m_PrefabInstance: {fileID: 374726585324795983}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &196454851139379108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1063960b0268ea04abd43bcce0878b71, type: 3}
+  m_PrefabInstance: {fileID: 374726585324795983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &716672716683396382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1063960b0268ea04abd43bcce0878b71, type: 3}
   m_PrefabInstance: {fileID: 374726585324795983}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3036746063889414716
@@ -23668,14 +23682,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1448a2a89f981fc4d80fcf6cb513c23b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c44d9731ce54f93438d264954c93dba7, type: 3}
---- !u!4 &5575393125431915107 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c44d9731ce54f93438d264954c93dba7, type: 3}
-  m_PrefabInstance: {fileID: 5392356864090133896}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5049685471667841241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c44d9731ce54f93438d264954c93dba7, type: 3}
+  m_PrefabInstance: {fileID: 5392356864090133896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5575393125431915107 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c44d9731ce54f93438d264954c93dba7, type: 3}
   m_PrefabInstance: {fileID: 5392356864090133896}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6789621458525745808

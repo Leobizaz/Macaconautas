@@ -10,7 +10,7 @@ public class destroyedTurretCollider : MonoBehaviour
     public int IsRuning = 1;
     private void Start()
     {
-        storeRef = GameObject.FindGameObjectWithTag("Scrapstore");
+        //storeRef = GameObject.FindGameObjectWithTag("Scrapstore");
     }
 
     private void FixedUpdate()
@@ -25,7 +25,7 @@ public class destroyedTurretCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Torre"))
         {
             if (!storeRef.activeInHierarchy && !hasBoght)
                 storeRef.SetActive(true);
