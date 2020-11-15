@@ -10,20 +10,24 @@ public class enemySpawner : MonoBehaviour
     public int enemyCount;
     public bool isDay;
 
-    public Transform playerPosForSpawn;
+    public GameObject[] SpawnPortal;
 
-    public float SpawnRangex;
-    public float SpawnRangez;
-    public float minSpawn;
-    public float maxSpawn;
+    private float SpawnRangex;
+    private float SpawnRangez;
+    public float minSpawnx;
+    public float maxSpawnx;
+    public float minSpawnz;
+    public float maxSpawnz;
 
-    public int numeberOfSeconds;
+    public int waveTimer;
     public int IsRuning = 1;
     
     void Start()
     {
-        playerPosForSpawn = GameObject.FindGameObjectWithTag("Core").transform;
-        SimplePool.Preload(enemyPrefab, enemyCount);
+
+        SpawnPortal = GameObject.FindGameObjectsWithTag("Portal");
+           
+        SimplePool.Preload(enemyPrefab, enemyCount* SpawnPortal.Length);
 
          StartCoroutine(spawner());
 
@@ -46,21 +50,25 @@ public class enemySpawner : MonoBehaviour
         IsRuning = 0;
         
 
-        for (int i = 0; i < enemyCount; i++)
+        for (int i = 0; i < SpawnPortal.Length; i++)
         {
 
-            SpawnRangex = Random.Range(minSpawn, maxSpawn);
-            SpawnRangez = Random.Range(minSpawn, maxSpawn);
-            Vector3 randomPoint = new Vector3(playerPosForSpawn.position.x + SpawnRangex, 6, playerPosForSpawn.position.z + SpawnRangez);
+            SpawnRangex = Random.Range(minSpawnx, maxSpawnx);
+            SpawnRangez = Random.Range(minSpawnz, maxSpawnz);
+            Vector3 randomPoint = new Vector3(SpawnPortal[i].transform.position.x + SpawnRangex, SpawnPortal[i].transform.position.y, SpawnPortal[i].transform.position.z + SpawnRangez);
 
             GameObject spawnPoint = new GameObject();
             spawnPoint.transform.position = randomPoint;
-            SimplePool.Spawn(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
-            Destroy(spawnPoint);
+            for (int z = 0; z < enemyCount; z++)
+            {
+                SimplePool.Spawn(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
+                Destroy(spawnPoint);
+            }
+            
         }
 
 
-        yield return new WaitForSeconds(numeberOfSeconds);
+        yield return new WaitForSeconds(waveTimer);
         IsRuning = 1;
 
     }
