@@ -9,6 +9,7 @@ public class GameEvents : MonoBehaviour
     public event Action onSelectTower;
     public event Action<GameObject> onCreateTower;
     public event Action<GameObject> onDestroyTower;
+    public event Action onNewPortal;
     public event Action<string> onGameOver;
 
     private void Awake()
@@ -19,6 +20,14 @@ public class GameEvents : MonoBehaviour
     private void Start()
     {
         
+    }
+
+    public void NewPortal()
+    {
+        if(onNewPortal!= null)
+        {
+            onNewPortal();
+        }
     }
 
     public void GameOver(string result)

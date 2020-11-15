@@ -24,7 +24,7 @@ public class enemySpawner : MonoBehaviour
     
     void Start()
     {
-
+        GameEvents.current.onNewPortal += OnNewPortal;
         SpawnPortal = GameObject.FindGameObjectsWithTag("Portal");
            
         SimplePool.Preload(enemyPrefab, (enemyCount* SpawnPortal.Length) *2);
@@ -33,6 +33,12 @@ public class enemySpawner : MonoBehaviour
 
         
     }
+
+    void OnNewPortal()
+    {
+        SpawnPortal = GameObject.FindGameObjectsWithTag("Portal");
+    }
+
 
     private void FixedUpdate()
     {

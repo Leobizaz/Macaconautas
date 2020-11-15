@@ -46,10 +46,11 @@ public class TowerSelector : MonoBehaviour
                 if(hit.transform.gameObject == this.transform.parent.gameObject)
                 {
                     Debug.Log("Tower selected");
-                    if(audioSources != null){
+                    /* if(audioSources != null){
                         sfxRandomSound.clip = audioSources[Random.Range(0, 1)];
                         sfxRandomSound.Play();
                     }
+                    */
                     GameEvents.current.selectTower();
                     SelectTower();
                 }
