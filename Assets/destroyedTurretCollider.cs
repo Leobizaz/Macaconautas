@@ -29,12 +29,21 @@ public class destroyedTurretCollider : MonoBehaviour
         {
             if (!storeRef.activeInHierarchy && !hasBoght)
                 storeRef.SetActive(true);
-
-            SimplePool.Despawn(this.gameObject);
         }
     }
 
-     IEnumerator check()
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Torre"))
+        {
+            if (hasBoght)
+            {
+                SimplePool.Despawn(this.gameObject);
+            }
+        }
+    }
+
+    IEnumerator check()
     {
         IsRuning = 0;
 
