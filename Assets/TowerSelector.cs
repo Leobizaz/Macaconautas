@@ -10,6 +10,10 @@ public class TowerSelector : MonoBehaviour
     Ray ray;
     public LayerMask layerMask;
     public GameObject decal;
+
+    public AudioSource sfxRandomSound;
+    public AudioClip[] audioSources;
+
     private void Start()
     {
         GameEvents.current.onSelectTower += DeSelectTower;
@@ -42,6 +46,10 @@ public class TowerSelector : MonoBehaviour
                 if(hit.transform.gameObject == this.transform.parent.gameObject)
                 {
                     Debug.Log("Tower selected");
+                    if(audioSources != null){
+                        sfxRandomSound.clip = audioSources[Random.Range(0, 1)];
+                        sfxRandomSound.Play();
+                    }
                     GameEvents.current.selectTower();
                     SelectTower();
                 }
