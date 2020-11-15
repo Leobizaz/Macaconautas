@@ -5,7 +5,7 @@ using UnityEngine;
 public class destroyedTurretCollider : MonoBehaviour
 {
     public GameObject storeRef;
-    public float ScrapValue;
+    // public float ScrapValue;
     public bool hasBoght = false;
     public int IsRuning = 1;
     private void Start()
@@ -19,13 +19,13 @@ public class destroyedTurretCollider : MonoBehaviour
             StartCoroutine(check());
 
 
-        if (storeRef.activeInHierarchy)
-            GetComponent<BoxCollider>().gameObject.SetActive(false);
+      //  if (storeRef.activeInHierarchy)
+        //    GetComponent<BoxCollider>().gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Torre"))
+        if (other.CompareTag("Torre") || other.CompareTag("Core"))
         {
             if (!storeRef.activeInHierarchy && !hasBoght)
                 storeRef.SetActive(true);
@@ -34,7 +34,7 @@ public class destroyedTurretCollider : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Torre"))
+        if (other.CompareTag("Torre") || other.CompareTag("Core"))
         {
             if (hasBoght)
             {

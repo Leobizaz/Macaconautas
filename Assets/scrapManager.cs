@@ -13,7 +13,7 @@ public class scrapManager : MonoBehaviour
 
     public Transform[] spawns;
 
-    public int numeberOfSeconds;
+    public int scrapWave;
     public int IsRuning = 1;
 
     private float SpawnRangex;
@@ -34,9 +34,14 @@ public class scrapManager : MonoBehaviour
     }
 
    
-    void Update()
+    void FixedUpdate()
     {
-        
+        if(IsRuning == 1)
+        {
+
+            StartCoroutine(spawnScrap());
+
+        }
     }
 
     public void addScore(float value)
@@ -56,7 +61,7 @@ public class scrapManager : MonoBehaviour
 
             SpawnRangex = Random.Range(minSpawnx, maxSpawnx);
             SpawnRangez = Random.Range(minSpawnz, maxSpawnz);
-            Vector3 randomPoint = new Vector3(playerPosForSpawn.position.x + SpawnRangex, 6, playerPosForSpawn.position.z + SpawnRangez);
+            Vector3 randomPoint = new Vector3(playerPosForSpawn.position.x + SpawnRangex, playerPosForSpawn.position.y, playerPosForSpawn.position.z + SpawnRangez);
 
             GameObject spawnPoint = new GameObject();
             spawnPoint.transform.position = randomPoint;
@@ -65,7 +70,7 @@ public class scrapManager : MonoBehaviour
         }
 
 
-        yield return new WaitForSeconds(numeberOfSeconds);
+        yield return new WaitForSeconds(scrapWave);
         IsRuning = 1;
 
     }
