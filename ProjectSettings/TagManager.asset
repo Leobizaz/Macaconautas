@@ -6,6 +6,7 @@ TagManager:
   tags:
   - inimigoBloco
   - Triggers
+  - scrap
   layers:
   - Default
   - TransparentFX
