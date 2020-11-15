@@ -7,18 +7,11 @@ namespace Tutorial
     public class SelectionSquare : MonoBehaviour
     {
         //Add all units in the scene to this array
-        public GameObject[] allUnits;
+        public List<GameObject> allUnits;
         //The selection square we draw when we drag the mouse to select units
         public RectTransform selectionSquareTrans;
-        //To test the square's corners
-        public Transform sphere1;
-        public Transform sphere2;
-        public Transform sphere3;
-        public Transform sphere4;
-        //The materials
-        public Material normalMaterial;
-        public Material highlightMaterial;
-        public Material selectedMaterial;
+
+
         public LayerMask layerMask;
         //All currently selected units
         [System.NonSerialized]
@@ -43,6 +36,18 @@ namespace Tutorial
         {
             //Deactivate the square selection image
             selectionSquareTrans.gameObject.SetActive(false);
+            GameEvents.current.onCreateTower += AddTower;
+            GameEvents.current.onDestroyTower += RemoveTower;
+        }
+
+        void AddTower(GameObject tower)
+        {
+            allUnits.Add(tower);
+        }
+
+        void RemoveTower(GameObject tower)
+        {
+            allUnits.Remove(tower);
         }
 
         void Update()
@@ -95,7 +100,7 @@ namespace Tutorial
                     selectedUnits.Clear();
 
                     //Select the units
-                    for (int i = 0; i < allUnits.Length; i++)
+                    for (int i = 0; i < allUnits.Count; i++)
                     {
                         GameObject currentUnit = allUnits[i];
 
@@ -174,7 +179,7 @@ namespace Tutorial
                 //Highlight the units within the selection square, but don't select the units
                 if (hasCreatedSquare)
                 {
-                    for (int i = 0; i < allUnits.Length; i++)
+                    for (int i = 0; i < allUnits.Count; i++)
                     {
                         GameObject currentUnit = allUnits[i];
 
@@ -182,13 +187,13 @@ namespace Tutorial
                         if (IsWithinPolygon(currentUnit.transform.position))
                         {
                             // currentUnit.GetComponent<MeshRenderer>().material = highlightMaterial;
-                            currentUnit.GetComponent<TowerSelector>().SelectTower();
+                            currentUnit.GetComponentInChildren<TowerSelector>().SelectTower();
                         }
                         //Otherwise deactivate
                         else
                         {
                             // currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
-                            currentUnit.GetComponent<TowerSelector>().DeSelectTower();
+                            currentUnit.GetComponentInChildren<TowerSelector>().DeSelectTower();
                         }
                     }
                 }
