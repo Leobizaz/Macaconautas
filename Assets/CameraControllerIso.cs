@@ -6,8 +6,8 @@ public class CameraControllerIso : MonoBehaviour
 {
     private void Update()
     {
-        float translationX = Input.GetAxis("Horizontal");
-        float translationY = Input.GetAxis("Vertical");
+        float translationX = Input.GetAxis("Horizontal")/ 2;
+        float translationY = Input.GetAxis("Vertical")/ 2;
         float fastTranslationX = translationX * 2;
         float fastTranslationY = translationY * 2;
 

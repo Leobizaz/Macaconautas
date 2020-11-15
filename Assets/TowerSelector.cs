@@ -6,23 +6,25 @@ using ECM.Components;
 
 public class TowerSelector : MonoBehaviour
 {
-    public BaseAgentController towerAgent;
+    public NewController towerAgent;
     Ray ray;
     public LayerMask layerMask;
     public GameObject decal;
     private void Start()
     {
-        GameEvents.current.onSelectTower += onTowerSelected;
+        GameEvents.current.onSelectTower += DeSelectTower;
     }
 
-    void onTowerSelected()
+    public void DeSelectTower()
     {
-        towerAgent.agent.SetDestination(towerAgent.transform.position);
-        Vector3 dest = towerAgent.agent.destination;
-        towerAgent.enabled = false;
-        towerAgent.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        towerAgent.agent.SetDestination(dest);
+        towerAgent.active = false;
         decal.SetActive(false);
+    }
+
+    public void SelectTower()
+    {
+        towerAgent.active = true;
+        decal.SetActive(true);
     }
 
 
@@ -41,13 +43,14 @@ public class TowerSelector : MonoBehaviour
                 {
                     Debug.Log("Tower selected");
                     GameEvents.current.selectTower();
-                    towerAgent.enabled = true;
-                    towerAgent.agent.isStopped = false;
-                    towerAgent.agent.speed = 5;
-                    decal.SetActive(true);
+                    SelectTower();
                 }
 
                 Debug.Log("Encostou");
+            }
+            else
+            {
+                DeSelectTower();
             }
         }
     }
