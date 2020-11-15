@@ -8,6 +8,8 @@ TagManager:
   - Triggers
   - scrap
   - Core
+  - Torre
+  - Scrapstore
   layers:
   - Default
   - TransparentFX
