@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraControllerIso : MonoBehaviour
 {
+    public Vector3 clampMin;
+    public Vector3 clampMax;
     private void Update()
     {
         float translationX = Input.GetAxis("Horizontal")/ 2;
@@ -60,6 +62,8 @@ public class CameraControllerIso : MonoBehaviour
             Camera.main.orthographicSize += 4;
             Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 30, 80);
         }
+
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, clampMin.x, clampMax.x), transform.position.y, Mathf.Clamp(transform.position.z, clampMin.z, clampMax.z));
 
     }
 

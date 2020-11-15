@@ -9,7 +9,7 @@ public class hpbar : MonoBehaviour
     private int maxHealth = 20;
 
     private int currentHealth;
-
+    public bool town = false;
     public event Action<float> OnHealthPercentage = delegate { };
     
 
@@ -48,12 +48,16 @@ public class hpbar : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
+            if (town)
+            {
+                GameEvents.current.GameOver("Lose");
+            }
             GameEvents.current.DestroyTower(this.gameObject);
             Destroy(this.gameObject, 0.1f);
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "inimigoBloco")
         {

@@ -23323,6 +23323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 35
+  town: 1
 --- !u!114 &6028153147168899168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23339,6 +23340,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   active: 0
+  tirofraco: {fileID: 0}
+  tiroforte: {fileID: 0}
 --- !u!135 &1324552089197613660
 SphereCollider:
   m_ObjectHideFlags: 0

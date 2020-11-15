@@ -9,6 +9,7 @@ public class GameEvents : MonoBehaviour
     public event Action onSelectTower;
     public event Action<GameObject> onCreateTower;
     public event Action<GameObject> onDestroyTower;
+    public event Action<string> onGameOver;
 
     private void Awake()
     {
@@ -19,6 +20,15 @@ public class GameEvents : MonoBehaviour
     {
         
     }
+
+    public void GameOver(string result)
+    {
+        if(onGameOver != null)
+        {
+            onGameOver(result);
+        }
+    }
+
     public void CreateTower(GameObject tower)
     {
         if(onCreateTower != null)
