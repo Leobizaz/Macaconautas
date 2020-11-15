@@ -22,7 +22,7 @@ public class enemySpawner : MonoBehaviour
     
     void Start()
     {
-        playerPosForSpawn = GameObject.FindGameObjectWithTag("Player").transform;
+        playerPosForSpawn = GameObject.FindGameObjectWithTag("Core").transform;
         SimplePool.Preload(enemyPrefab, enemyCount);
 
          StartCoroutine(spawner());

@@ -20,7 +20,7 @@ public class enemyAI : MonoBehaviour
     void Start()
     {
         
-        playerpos = GameObject.FindGameObjectsWithTag("Player");
+        playerpos = GameObject.FindGameObjectsWithTag("Core");
         
         enemy = this.gameObject;
         enemyNavMesh = GetComponent<NavMeshAgent>();

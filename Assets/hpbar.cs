@@ -36,6 +36,10 @@ public class hpbar : MonoBehaviour
     
     void Update()
     {
-        
+        if(currentHealth <= 0)
+        {
+            GameEvents.current.DestroyTower(this.gameObject);
+            Destroy(this.gameObject, 0.1f);
+        }
     }
 }
