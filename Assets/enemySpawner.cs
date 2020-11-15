@@ -6,7 +6,7 @@ public class enemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public Transform[] spawns;
-    public Transform simpleSpawn;
+   // public Transform simpleSpawn;
     public int enemyCount;
     public bool isDay;
 
@@ -27,7 +27,7 @@ public class enemySpawner : MonoBehaviour
 
         SpawnPortal = GameObject.FindGameObjectsWithTag("Portal");
            
-        SimplePool.Preload(enemyPrefab, enemyCount* SpawnPortal.Length);
+        SimplePool.Preload(enemyPrefab, (enemyCount* SpawnPortal.Length) *2);
 
          StartCoroutine(spawner());
 
@@ -38,6 +38,7 @@ public class enemySpawner : MonoBehaviour
     {
         if(IsRuning == 1)
         {
+            enemyCount += 1;
             StartCoroutine(spawner());
 
         }
@@ -53,17 +54,26 @@ public class enemySpawner : MonoBehaviour
         for (int i = 0; i < SpawnPortal.Length; i++)
         {
 
-            SpawnRangex = Random.Range(minSpawnx, maxSpawnx);
-            SpawnRangez = Random.Range(minSpawnz, maxSpawnz);
-            Vector3 randomPoint = new Vector3(SpawnPortal[i].transform.position.x + SpawnRangex, SpawnPortal[i].transform.position.y, SpawnPortal[i].transform.position.z + SpawnRangez);
+          //  SpawnRangex = Random.Range(minSpawnx, maxSpawnx);
+           // SpawnRangez = Random.Range(minSpawnz, maxSpawnz);
+            //Vector3 randomPoint = new Vector3(SpawnPortal[i].transform.position.x + SpawnRangex, SpawnPortal[i].transform.position.y, SpawnPortal[i].transform.position.z + SpawnRangez);
 
-            GameObject spawnPoint = new GameObject();
-            spawnPoint.transform.position = randomPoint;
+            //GameObject spawnPoint = new GameObject();
+            //spawnPoint.transform.position = randomPoint;
+
             for (int z = 0; z < enemyCount; z++)
             {
+                SpawnRangex = Random.Range(minSpawnx, maxSpawnx);
+                SpawnRangez = Random.Range(minSpawnz, maxSpawnz);
+                Vector3 randomPoint = new Vector3(SpawnPortal[i].transform.position.x + SpawnRangex, SpawnPortal[i].transform.position.y, SpawnPortal[i].transform.position.z + SpawnRangez);
+
+                GameObject spawnPoint = new GameObject();
+                spawnPoint.transform.position = randomPoint;
                 SimplePool.Spawn(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
                 Destroy(spawnPoint);
             }
+
+            
             
         }
 

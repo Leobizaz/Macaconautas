@@ -7,21 +7,22 @@ public class enemyAI : MonoBehaviour
     public GameObject enemy;
     public NavMeshAgent enemyNavMesh;
     public GameObject[] playerpos;
-    
+    public GameObject playerpos2;
     //public Vector3 dir;
 
     private float lowestSoFar = Mathf.Infinity;
     public GameObject closest;
-
+    public float r;
     
     public int numeberOfSeconds;
     public int IsRuning = 1;
 
-    void Start()
+    private void Awake()
     {
-        
-        playerpos = GameObject.FindGameObjectsWithTag("Core");
-        
+
+        r = Random.Range(0, 99);
+        playerpos = GameObject.FindGameObjectsWithTag("Torre");
+        playerpos2 = GameObject.FindGameObjectWithTag("Core");
         enemy = this.gameObject;
         enemyNavMesh = GetComponent<NavMeshAgent>();
         lowestSoFar = Mathf.Infinity;
@@ -32,19 +33,28 @@ public class enemyAI : MonoBehaviour
     }
 
    
+        
+
+    
+
+   
     void FixedUpdate()
     {
-        if(IsRuning == 1)       
+        if(IsRuning == 1 && r < 60)       
         StartCoroutine(setDestinationCoroutine());
+        else
+            StartCoroutine(setDestinationCoroutine2());
 
-        if(closest.activeInHierarchy)
+        if (closest.activeInHierarchy)
         enemyNavMesh.SetDestination(closest.transform.position);
+        
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")){
+        if (other.CompareTag("Torre") || other.CompareTag("Core"))
+        {
 
             other.GetComponent<hpbar>().modifyHealth(-1);
             SimplePool.Despawn(enemy);
@@ -54,6 +64,7 @@ public class enemyAI : MonoBehaviour
     public IEnumerator setDestinationCoroutine()
     {
         IsRuning = 0;
+
         
 
         for (int i = 0; i < playerpos.Length; i++)
@@ -68,6 +79,16 @@ public class enemyAI : MonoBehaviour
         }
       
      
+        yield return new WaitForSeconds(numeberOfSeconds);
+        IsRuning = 1;
+    }
+
+    public IEnumerator setDestinationCoroutine2()
+    {
+        IsRuning = 0;
+
+               closest = playerpos2;
+
         yield return new WaitForSeconds(numeberOfSeconds);
         IsRuning = 1;
     }
