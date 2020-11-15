@@ -33,13 +33,32 @@ public class hpbar : MonoBehaviour
 
     }
 
-    
+    public void decreaseHealth(int amount)
+    {
+        currentHealth -= amount;
+
+        float currentHealthpct = (float)currentHealth / (float)maxHealth;
+
+        OnHealthPercentage(currentHealthpct);
+
+    }
+
+
     void Update()
     {
         if(currentHealth <= 0)
         {
             GameEvents.current.DestroyTower(this.gameObject);
             Destroy(this.gameObject, 0.1f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.tag == "inimigoBloco")
+        {
+            Destroy(collision.gameObject);
+            decreaseHealth(1);
         }
     }
 }

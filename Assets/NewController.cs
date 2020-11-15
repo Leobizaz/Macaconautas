@@ -10,6 +10,8 @@ public class NewController : MonoBehaviour
     NavMeshAgent agent;
     public LayerMask layerMask;
     public bool active;
+    public GameObject tirofraco;
+    public GameObject tiroforte;
 
     private void Start()
     {

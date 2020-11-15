@@ -49,6 +49,18 @@ public class CameraControllerIso : MonoBehaviour
         {
             transform.Translate(1, 0, 1);
         }
+
+        if(Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            Camera.main.orthographicSize -= 4;
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 30, 80);
+        }
+        if(Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            Camera.main.orthographicSize += 4;
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 30, 80);
+        }
+
     }
 
 }
